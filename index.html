@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>疯狂动物城生日惊喜</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 引入jsPDF库用于生成PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -19,17 +16,40 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* 容器样式 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
-        /* 视频播放器区域 */
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .page-title {
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 52px;
+            background: linear-gradient(135deg, #ff9a00, #ff6b6b, #ff9a00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 5px 15px rgba(255, 154, 0, 0.2);
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .page-title p {
+            font-size: 22px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
         .video-container {
             position: relative;
             width: 100%;
@@ -37,7 +57,7 @@
             margin: 0 auto;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             background: #000;
         }
 
@@ -79,13 +99,13 @@
             align-items: center;
             cursor: pointer;
             margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(238, 90, 36, 0.4);
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .play-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 12px 30px rgba(238, 90, 36, 0.6);
+            box-shadow: 0 15px 35px rgba(238, 90, 36, 0.7);
         }
 
         .play-btn i {
@@ -94,21 +114,30 @@
         }
 
         .play-btn-text {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
-        /* 彩蛋按钮区域 */
-        .egg-button-container {
-            position: fixed;
-            bottom: 40px;
-            left: 0;
+        .progress-container {
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff9a00, #ff6b6b);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .egg-button-container {
+            margin-top: 40px;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -124,543 +153,40 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 18px 40px;
-            font-size: 20px;
+            padding: 20px 50px;
+            font-size: 22px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .egg-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s ease;
+            margin: 0 auto;
         }
 
         .egg-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
-        }
-
-        .egg-button:hover:before {
-            left: 100%;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.7);
         }
 
         .egg-button:active {
-            transform: translateY(0);
-        }
-
-        .egg-button i {
-            font-size: 24px;
-        }
-
-        /* 信封页面样式 - 使用2560x1440背景图片 */
-        .letter-page {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0c2461;
-            /* 这里设置你的2560x1440背景图片路径 */
-            background-image: url('./videos/照片.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            z-index: 200;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.8s ease;
-        }
-
-        /* 背景图片遮罩，确保文字可读性 */
-        .letter-page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(12, 36, 97, 0.7);
-            backdrop-filter: blur(3px);
-            z-index: 1;
-        }
-
-        .letter-page.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .letter-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 50px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
-            position: relative;
-            transform: scale(0.9);
-            opacity: 0;
-            transition: transform 0.8s ease, opacity 0.8s ease;
-            border: 10px solid transparent;
-            background-clip: padding-box;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(135deg, #ff9a00, #ff6b6b, #4a69bd);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            z-index: 2;
-        }
-
-        .letter-page.active .letter-container {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        /* 信件内部背景效果 */
-        .letter-content-wrapper {
-            position: relative;
-            padding: 20px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
-            border-radius: 10px;
-            box-shadow: inset 0 0 30px rgba(255, 154, 0, 0.1);
-        }
-
-        .letter-content-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 154, 0, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(74, 105, 189, 0.1) 0%, transparent 30%);
-            pointer-events: none;
-            border-radius: 10px;
-        }
-
-        .letter-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .letter-header::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 5px;
-            background: linear-gradient(90deg, #ff9a00, #ff6b6b, #4a69bd);
-            border-radius: 3px;
-            box-shadow: 0 2px 10px rgba(255, 154, 0, 0.3);
-        }
-
-        .letter-header h1 {
-            color: #0c2461;
-            font-size: 42px;
-            margin-bottom: 15px;
-            font-family: 'Arial Rounded MT Bold', sans-serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(135deg, #0c2461 30%, #4a69bd 70%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .letter-header p {
-            color: #666;
-            font-size: 20px;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .letter-content {
-            color: #333;
-            font-size: 19px;
-            line-height: 1.9;
-            margin-bottom: 40px;
-            padding: 0 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .letter-content p {
-            margin-bottom: 25px;
-            text-align: justify;
-            position: relative;
-            padding-left: 15px;
-        }
-
-        .letter-content p::before {
-            content: '✦';
-            position: absolute;
-            left: -5px;
-            top: 0;
-            color: #ff9a00;
-            font-size: 14px;
-        }
-
-        .letter-content .highlight {
-            background: linear-gradient(120deg, rgba(255, 154, 0, 0.2), rgba(255, 107, 107, 0.2));
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #0c2461;
-            border-left: 3px solid #ff9a00;
-        }
-
-        .letter-signature {
-            text-align: right;
-            margin-top: 50px;
-            font-family: 'Brush Script MT', cursive;
-            font-size: 32px;
-            color: #0c2461;
-            position: relative;
-            padding-right: 40px;
-            padding-top: 20px;
-            border-top: 2px dashed rgba(255, 154, 0, 0.3);
-        }
-
-        .letter-signature::before {
-            content: '✨';
-            position: absolute;
-            right: 10px;
-            top: -5px;
-            font-size: 28px;
-            animation: twinkle 2s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-
-        .letter-actions {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .action-btn {
-            background: linear-gradient(135deg, #ff9a00, #ff6b6b);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 18px 35px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .action-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff6b6b, #ff9a00);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
-        }
-
-        .action-btn:hover::before {
-            opacity: 1;
-        }
-
-        .action-btn:active {
             transform: translateY(-2px);
         }
 
-        .action-btn.secondary {
-            background: linear-gradient(135deg, #4a69bd, #1e3799);
-            box-shadow: 0 8px 25px rgba(74, 105, 189, 0.4);
-        }
-
-        .action-btn.secondary::before {
-            background: linear-gradient(135deg, #1e3799, #4a69bd);
-        }
-
-        .action-btn.secondary:hover {
-            box-shadow: 0 15px 35px rgba(74, 105, 189, 0.6);
-        }
-
-        .close-letter {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 24px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.5);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .close-letter:hover {
-            transform: rotate(90deg) scale(1.1);
-            box-shadow: 0 12px 25px rgba(255, 107, 107, 0.7);
-        }
-
-        /* 响应式设计 */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .page-title h1 {
+                font-size: 36px;
             }
             
-            .video-container {
-                border-radius: 10px;
-            }
-            
-            .egg-button {
-                padding: 15px 30px;
+            .page-title p {
                 font-size: 18px;
             }
             
-            .letter-container {
-                padding: 25px;
+            .egg-button {
+                padding: 16px 30px;
+                font-size: 18px;
             }
-            
-            .letter-header h1 {
-                font-size: 32px;
-            }
-            
-            .letter-content {
-                font-size: 17px;
-            }
-            
-            .letter-signature {
-                font-size: 28px;
-            }
-            
-            .action-btn {
-                padding: 15px 25px;
-                font-size: 16px;
-            }
-            
-            .letter-actions {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-        }
-
-        /* 标题样式 */
-        .page-title {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-top: 30px;
-        }
-
-        .page-title h1 {
-            font-size: 52px;
-            background: linear-gradient(135deg, #ff9a00, #ff6b6b, #ff9a00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-            text-shadow: 0 5px 15px rgba(255, 154, 0, 0.2);
-            font-family: 'Comic Sans MS', cursive;
-        }
-
-        .page-title p {
-            font-size: 22px;
-            opacity: 0.9;
-            font-style: italic;
-        }
-
-        /* 进度条样式 */
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ff9a00, #ff6b6b);
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        /* 加载动画 */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(12, 36, 97, 0.95);
-            background-image: url('your-background-image.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(12, 36, 97, 0.85);
-            backdrop-filter: blur(5px);
-        }
-
-        .loading-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .loading-spinner {
-            width: 80px;
-            height: 80px;
-            border: 6px solid rgba(255, 255, 255, 0.2);
-            border-top-color: #ff9a00;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 25px;
-            z-index: 1;
-        }
-
-        .loading-text {
-            color: white;
-            font-size: 22px;
-            text-align: center;
-            z-index: 1;
-            font-weight: 500;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* 成功提示 */
-        .success-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            z-index: 1001;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-            border: 4px solid transparent;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(135deg, #4CAF50, #8BC34A);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            max-width: 90%;
-            width: 450px;
-        }
-
-        .success-message.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .success-icon {
-            font-size: 70px;
-            color: #4CAF50;
-            margin-bottom: 25px;
-            animation: bounce 1s ease;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .success-text {
-            color: #333;
-            font-size: 20px;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        .close-success {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 30px;
-            font-size: 17px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
-        }
-
-        .close-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(76, 175, 80, 0.5);
-        }
-
-        .close-success:active {
-            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -673,15 +199,15 @@
         
         <div class="video-container">
             <video id="birthday-video" preload="metadata" playsinline>
-                <!-- 这里替换为你的视频文件路径 -->
                 <source src="./videos/生日动画.mp4" type="video/mp4">
-                <source src="your-birthday-video.webm" type="video/webm">
-                您的浏览器不支持视频播放，请尝试使用现代浏览器。
+                您的浏览器不支持视频播放
             </video>
             
             <div class="video-overlay" id="video-overlay">
                 <button class="play-btn" id="play-btn">
-                    <i class="fas fa-play"></i>
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
                 </button>
                 <div class="play-btn-text">点击播放生日惊喜</div>
             </div>
@@ -690,113 +216,46 @@
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
         </div>
-    </div>
-
-    <!-- 彩蛋按钮 -->
-    <div class="egg-button-container" id="egg-button-container">
-        <button class="egg-button" id="egg-button">
-            <i class="fas fa-envelope-open-text"></i>
-            开启神秘信件
-        </button>
-    </div>
-
-    <!-- 信封页面 -->
-    <div class="letter-page" id="letter-page">
-        <div class="letter-container">
-            <button class="close-letter" id="close-letter">
-                <i class="fas fa-times"></i>
+        
+        <div class="egg-button-container" id="egg-button-container">
+            <button class="egg-button" id="next-page-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" style="margin-right: 10px;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                前往生日蛋糕许愿
             </button>
-            
-            <div class="letter-content-wrapper">
-                <div class="letter-header">
-                    <h1>给最特别的你</h1>
-                    <p>疯狂动物城主题生日信件</p>
-                </div>
-                
-                <div class="letter-content">
-                    <p>亲爱的小寿星🐰：</p>
-                    
-                    <p>今天是你的生日，我想用最特别的方式为你庆祝。就像《疯狂动物城》里的朱迪和尼克，我们的故事也充满了惊喜、冒险和温暖。</p>
-                    
-                    <p>还记得我们第一次一起看这部电影的场景吗？你靠在我肩上，眼睛亮晶晶地说："我也想成为朱迪那样勇敢的警察！"那一刻，我就知道，我找到了我的小兔子警官。</p>
-                    
-                    <p>在我们自己的"动物城"里，你确实像朱迪一样<span class="highlight">勇敢、坚定</span>，无论遇到什么挑战都能勇往直前。而我也学着尼克，从那个有点玩世不恭的自己，变成了愿意为一个人认真守护的狐狸。</p>
-                    
-                    <p>电影里最打动我的，不是宏伟的城市景观，而是尼克和朱迪分享爪爪冰棍的平凡瞬间。就像我们每次在深夜分享一碗泡面，在雨天共撑一把伞，在疲惫时互相打气的那些时刻。这些简单的温暖，组成了我们最珍贵的"动物城"。</p>
-                    
-                    <p>你总说尼克改变了朱迪，但你知道吗？是你改变了我。你让我学会了温柔，学会了坚持，学会了爱一个人就是要成为她最坚实的后盾。</p>
-                    
-                    <p>生日快乐，我的小朱迪！愿新的一岁，你依然勇敢追梦，而我，会永远在你身旁，做你最信任的搭档。</p>
-                    
-                    <p>愿我们的故事，永远比疯狂动物城更精彩，更有爱。因为在这里，没有"尝试一切"的犹豫，只有"一定是你"的坚定。</p>
-                </div>
-                
-                <div class="letter-signature">
-                    永远爱你的尼克🦊<br>
-                    <span style="font-size: 28px; color: #ff6b6b;">你的专属狐狸先生</span>
-                </div>
-            </div>
-            
-            <div class="letter-actions">
-                <button class="action-btn" id="download-pdf">
-                    <i class="fas fa-file-pdf"></i>
-                    下载PDF信件
-                </button>
-                <button class="action-btn secondary" id="print-letter">
-                    <i class="fas fa-print"></i>
-                    打印信件
-                </button>
-            </div>
         </div>
-    </div>
-
-    <!-- PDF生成加载动画 -->
-    <div class="loading-overlay" id="loading-overlay">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">正在生成PDF信件，请稍候...</div>
-        </div>
-    </div>
-
-    <!-- 成功提示 -->
-    <div class="success-message" id="success-message">
-        <div class="success-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <div class="success-text" id="success-text">PDF信件已成功生成！</div>
-        <button class="close-success" id="close-success">好的</button>
     </div>
 
     <script>
-        // DOM元素
         const video = document.getElementById('birthday-video');
         const videoOverlay = document.getElementById('video-overlay');
         const playBtn = document.getElementById('play-btn');
-        const eggButtonContainer = document.getElementById('egg-button-container');
-        const eggButton = document.getElementById('egg-button');
-        const letterPage = document.getElementById('letter-page');
-        const closeLetter = document.getElementById('close-letter');
         const progressBar = document.getElementById('progress-bar');
-        const downloadPdfBtn = document.getElementById('download-pdf');
-        const printLetterBtn = document.getElementById('print-letter');
-        const loadingOverlay = document.getElementById('loading-overlay');
-        const successMessage = document.getElementById('success-message');
-        const successText = document.getElementById('success-text');
-        const closeSuccessBtn = document.getElementById('close-success');
+        const eggButtonContainer = document.getElementById('egg-button-container');
+        const nextPageBtn = document.getElementById('next-page-btn');
         
         // 播放/暂停视频
         playBtn.addEventListener('click', function() {
             if (video.paused) {
                 video.play();
                 videoOverlay.classList.add('hidden');
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playBtn.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                `;
             } else {
                 video.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.innerHTML = `
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                `;
             }
         });
         
-        // 视频播放进度更新
+        // 视频进度更新
         video.addEventListener('timeupdate', function() {
             const progress = (video.currentTime / video.duration) * 100;
             progressBar.style.width = progress + '%';
@@ -804,395 +263,18 @@
         
         // 视频播放结束
         video.addEventListener('ended', function() {
-            // 显示彩蛋按钮
             eggButtonContainer.classList.add('show');
-            
-            // 播放结束音效
             playEndSound();
         });
         
-        // 彩蛋按钮点击事件
-        eggButton.addEventListener('click', function() {
-            // 添加点击效果
-            eggButton.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                eggButton.style.transform = '';
-            }, 200);
-            
-            // 显示信封页面
-            letterPage.classList.add('active');
-            
-            // 隐藏彩蛋按钮
-            eggButtonContainer.classList.remove('show');
-            
-            // 播放转场音效
+        // 前往蛋糕页面
+        nextPageBtn.addEventListener('click', function() {
             playTransitionSound();
-        });
-        
-        // 关闭信封页面
-        closeLetter.addEventListener('click', function() {
-            letterPage.classList.remove('active');
-            
-            // 重新显示彩蛋按钮
+            // 添加点击效果
+            nextPageBtn.style.transform = 'scale(0.95)';
             setTimeout(() => {
-                eggButtonContainer.classList.add('show');
+                window.location.href = 'cake-animation.html';
             }, 300);
-        });
-        
-        // 点击信封页面背景关闭
-        letterPage.addEventListener('click', function(e) {
-            if (e.target === letterPage) {
-                closeLetter.click();
-            }
-        });
-        
-        // PDF下载功能
-        downloadPdfBtn.addEventListener('click', async function() {
-            showLoading();
-            
-            try {
-                await generatePdf();
-                hideLoading();
-                showSuccess('PDF信件已成功下载！文件名为：疯狂动物城生日信件.pdf');
-            } catch (error) {
-                console.error('PDF生成失败:', error);
-                hideLoading();
-                
-                // 尝试备用方案
-                try {
-                    await generateFallbackTextFile();
-                    showSuccess('已生成文本版本信件供下载！');
-                } catch (fallbackError) {
-                    console.error('备用方案也失败:', fallbackError);
-                    showSuccess('文件生成失败，请使用打印功能或截图保存。');
-                }
-            }
-        });
-        
-        // 生成PDF函数
-        async function generatePdf() {
-            return new Promise((resolve, reject) => {
-                try {
-                    const { jsPDF } = window.jspdf;
-                    const pdf = new jsPDF({
-                        orientation: 'portrait',
-                        unit: 'mm',
-                        format: 'a4',
-                        compress: true
-                    });
-                    
-                    // 设置字体
-                    pdf.setFont("helvetica");
-                    
-                    // 添加背景色（模拟背景效果）
-                    pdf.setFillColor(12, 36, 97);
-                    pdf.rect(0, 0, 210, 297, 'F');
-                    
-                    // 添加背景渐变效果
-                    pdf.setGradient(0, 0, 210, 297, 
-                        [255, 154, 0], [74, 105, 189], 
-                        'axial', [0, 0.5, 1], [0, 0, 0, 1]);
-                    
-                    // 添加信件容器
-                    pdf.setFillColor(255, 255, 255, 0.95);
-                    pdf.roundedRect(15, 15, 180, 267, 5, 5, 'F');
-                    
-                    // 添加边框
-                    pdf.setDrawColor(255, 154, 0);
-                    pdf.setLineWidth(2);
-                    pdf.roundedRect(15, 15, 180, 267, 5, 5);
-                    
-                    // 添加标题
-                    pdf.setFontSize(28);
-                    pdf.setTextColor(12, 36, 97);
-                    pdf.text("给最特别的你", 105, 45, { align: 'center' });
-                    
-                    pdf.setFontSize(16);
-                    pdf.setTextColor(102, 102, 102);
-                    pdf.text("疯狂动物城主题生日信件", 105, 55, { align: 'center' });
-                    
-                    // 添加装饰线
-                    pdf.setDrawColor(255, 154, 0);
-                    pdf.setLineWidth(3);
-                    pdf.line(60, 60, 150, 60);
-                    
-                    // 添加信件内容
-                    pdf.setFontSize(12);
-                    pdf.setTextColor(51, 51, 51);
-                    
-                    const letterContent = [
-                        "亲爱的小寿星🐰：",
-                        "",
-                        "今天是你的生日，我想用最特别的方式为你庆祝。就像《疯狂动物城》里的朱迪和尼克，",
-                        "我们的故事也充满了惊喜、冒险和温暖。",
-                        "",
-                        "还记得我们第一次一起看这部电影的场景吗？你靠在我肩上，眼睛亮晶晶地说：",
-                        "'我也想成为朱迪那样勇敢的警察！'那一刻，我就知道，我找到了我的小兔子警官。",
-                        "",
-                        "在我们自己的'动物城'里，你确实像朱迪一样勇敢、坚定，无论遇到什么挑战都能",
-                        "勇往直前。而我也学着尼克，从那个有点玩世不恭的自己，变成了愿意为一个人",
-                        "认真守护的狐狸。",
-                        "",
-                        "电影里最打动我的，不是宏伟的城市景观，而是尼克和朱迪分享爪爪冰棍的平凡瞬间。",
-                        "就像我们每次在深夜分享一碗泡面，在雨天共撑一把伞，在疲惫时互相打气的那些时刻。",
-                        "这些简单的温暖，组成了我们最珍贵的'动物城'。",
-                        "",
-                        "你总说尼克改变了朱迪，但你知道吗？是你改变了我。你让我学会了温柔，",
-                        "学会了坚持，学会了爱一个人就是要成为她最坚实的后盾。",
-                        "",
-                        "生日快乐，我的小朱迪！愿新的一岁，你依然勇敢追梦，而我，会永远在你身旁，",
-                        "做你最信任的搭档。",
-                        "",
-                        "愿我们的故事，永远比疯狂动物城更精彩，更有爱。因为在这里，",
-                        "没有'尝试一切'的犹豫，只有'一定是你'的坚定。"
-                    ];
-                    
-                    // 逐行添加文本
-                    let y = 75;
-                    const lineHeight = 7;
-                    const margin = 25;
-                    const maxWidth = 160;
-                    
-                    letterContent.forEach(line => {
-                        if (y > 220) {
-                            pdf.addPage();
-                            pdf.setFillColor(12, 36, 97);
-                            pdf.rect(0, 0, 210, 297, 'F');
-                            pdf.setFillColor(255, 255, 255, 0.95);
-                            pdf.roundedRect(15, 15, 180, 267, 5, 5, 'F');
-                            y = 40;
-                        }
-                        
-                        if (line.trim() === "") {
-                            y += lineHeight;
-                        } else {
-                            const lines = pdf.splitTextToSize(line, maxWidth);
-                            pdf.text(lines, margin, y);
-                            y += lines.length * lineHeight;
-                        }
-                    });
-                    
-                    // 添加签名
-                    y = Math.min(y + 20, 240);
-                    pdf.setFontSize(22);
-                    pdf.setTextColor(12, 36, 97);
-                    pdf.setFont("times", "italic");
-                    pdf.text("永远爱你的尼克🦊", 170, y, { align: 'right' });
-                    
-                    y += 10;
-                    pdf.setFontSize(18);
-                    pdf.setTextColor(255, 107, 107);
-                    pdf.text("你的专属狐狸先生", 170, y, { align: 'right' });
-                    
-                    // 添加页脚
-                    pdf.setFontSize(10);
-                    pdf.setTextColor(136, 136, 136);
-                    pdf.setFont("helvetica");
-                    
-                    const now = new Date();
-                    const dateStr = now.toLocaleDateString('zh-CN');
-                    pdf.text(`此信件为专属定制，仅此一份 | 保存日期: ${dateStr}`, 105, 280, { align: 'center' });
-                    
-                    // 保存PDF
-                    pdf.save('疯狂动物城生日信件.pdf');
-                    
-                    resolve();
-                    
-                } catch (error) {
-                    reject(error);
-                }
-            });
-        }
-        
-        // 备用方案：创建文本文件下载
-        async function generateFallbackTextFile() {
-            return new Promise((resolve, reject) => {
-                try {
-                    const letterText = `
-✨ 疯狂动物城主题生日信件 ✨
-
-给最特别的你
-
-亲爱的小寿星🐰：
-
-今天是你的生日，我想用最特别的方式为你庆祝。就像《疯狂动物城》里的朱迪和尼克，我们的故事也充满了惊喜、冒险和温暖。
-
-还记得我们第一次一起看这部电影的场景吗？你靠在我肩上，眼睛亮晶晶地说："我也想成为朱迪那样勇敢的警察！"那一刻，我就知道，我找到了我的小兔子警官。
-
-在我们自己的"动物城"里，你确实像朱迪一样勇敢、坚定，无论遇到什么挑战都能勇往直前。而我也学着尼克，从那个有点玩世不恭的自己，变成了愿意为一个人认真守护的狐狸。
-
-电影里最打动我的，不是宏伟的城市景观，而是尼克和朱迪分享爪爪冰棍的平凡瞬间。就像我们每次在深夜分享一碗泡面，在雨天共撑一把伞，在疲惫时互相打气的那些时刻。这些简单的温暖，组成了我们最珍贵的"动物城"。
-
-你总说尼克改变了朱迪，但你知道吗？是你改变了我。你让我学会了温柔，学会了坚持，学会了爱一个人就是要成为她最坚实的后盾。
-
-生日快乐，我的小朱迪！愿新的一岁，你依然勇敢追梦，而我，会永远在你身旁，做你最信任的搭档。
-
-愿我们的故事，永远比疯狂动物城更精彩，更有爱。因为在这里，没有"尝试一切"的犹豫，只有"一定是你"的坚定。
-
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨
-
-永远爱你的尼克🦊
-你的专属狐狸先生
-
-保存日期: ${new Date().toLocaleDateString('zh-CN')}
-                    `;
-                    
-                    const blob = new Blob([letterText], { type: 'text/plain;charset=utf-8' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = '疯狂动物城生日信件.txt';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                    
-                    resolve();
-                } catch (error) {
-                    reject(error);
-                }
-            });
-        }
-        
-        // 打印功能
-        printLetterBtn.addEventListener('click', function() {
-            const printContent = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>打印生日信件</title>
-                    <meta charset="UTF-8">
-                    <style>
-                        @media print {
-                            @page {
-                                size: A4;
-                                margin: 20mm;
-                            }
-                            body {
-                                background: linear-gradient(135deg, #0c2461, #1e3799, #4a69bd);
-                                background-image: url('your-background-image.jpg');
-                                background-size: cover;
-                                background-position: center;
-                                min-height: 100vh;
-                                padding: 40px;
-                                font-family: 'Microsoft YaHei', sans-serif;
-                                line-height: 1.8;
-                                color: #333;
-                                position: relative;
-                            }
-                            body::before {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                right: 0;
-                                bottom: 0;
-                                background: rgba(255, 255, 255, 0.9);
-                                z-index: 1;
-                            }
-                        }
-                        .print-container {
-                            max-width: 800px;
-                            margin: 0 auto;
-                            padding: 50px;
-                            background: white;
-                            border-radius: 20px;
-                            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-                            border: 8px solid transparent;
-                            background-image: linear-gradient(white, white), 
-                                              linear-gradient(135deg, #ff9a00, #ff6b6b, #4a69bd);
-                            background-origin: border-box;
-                            background-clip: padding-box, border-box;
-                            position: relative;
-                            z-index: 2;
-                        }
-                        .print-header {
-                            text-align: center;
-                            margin-bottom: 40px;
-                            padding-bottom: 20px;
-                            border-bottom: 3px solid #ff9a00;
-                        }
-                        .print-header h1 {
-                            color: #0c2461;
-                            font-size: 36px;
-                            margin-bottom: 10px;
-                        }
-                        .print-content {
-                            font-size: 18px;
-                            margin-bottom: 40px;
-                            padding: 20px;
-                            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
-                            border-radius: 10px;
-                        }
-                        .print-signature {
-                            text-align: right;
-                            margin-top: 60px;
-                            font-family: 'Brush Script MT', cursive;
-                            font-size: 28px;
-                            color: #0c2461;
-                            border-top: 1px solid #eee;
-                            padding-top: 20px;
-                        }
-                        .print-footer {
-                            text-align: center;
-                            margin-top: 40px;
-                            color: #888;
-                            font-size: 14px;
-                            border-top: 1px dashed #ddd;
-                            padding-top: 20px;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="print-container">
-                        <div class="print-header">
-                            <h1>给最特别的你</h1>
-                            <p>疯狂动物城主题生日信件</p>
-                        </div>
-                        
-                        <div class="print-content">
-                            <p>亲爱的小寿星🐰：</p>
-                            
-                            <p>今天是你的生日，我想用最特别的方式为你庆祝。就像《疯狂动物城》里的朱迪和尼克，我们的故事也充满了惊喜、冒险和温暖。</p>
-                            
-                            <p>还记得我们第一次一起看这部电影的场景吗？你靠在我肩上，眼睛亮晶晶地说："我也想成为朱迪那样勇敢的警察！"那一刻，我就知道，我找到了我的小兔子警官。</p>
-                            
-                            <p>在我们自己的"动物城"里，你确实像朱迪一样<strong>勇敢、坚定</strong>，无论遇到什么挑战都能勇往直前。而我也学着尼克，从那个有点玩世不恭的自己，变成了愿意为一个人认真守护的狐狸。</p>
-                            
-                            <p>电影里最打动我的，不是宏伟的城市景观，而是尼克和朱迪分享爪爪冰棍的平凡瞬间。就像我们每次在深夜分享一碗泡面，在雨天共撑一把伞，在疲惫时互相打气的那些时刻。这些简单的温暖，组成了我们最珍贵的"动物城"。</p>
-                            
-                            <p>你总说尼克改变了朱迪，但你知道吗？是你改变了我。你让我学会了温柔，学会了坚持，学会了爱一个人就是要成为她最坚实的后盾。</p>
-                            
-                            <p>生日快乐，我的小朱迪！愿新的一岁，你依然勇敢追梦，而我，会永远在你身旁，做你最信任的搭档。</p>
-                            
-                            <p>愿我们的故事，永远比疯狂动物城更精彩，更有爱。因为在这里，没有"尝试一切"的犹豫，只有"一定是你"的坚定。</p>
-                        </div>
-                        
-                        <div class="print-signature">
-                            永远爱你的尼克🦊<br>
-                            <span style="color: #ff6b6b;">你的专属狐狸先生</span>
-                        </div>
-                        
-                        <div class="print-footer">
-                            此信件为专属定制，仅此一份 | 保存日期: ${new Date().toLocaleDateString('zh-CN')}
-                        </div>
-                    </div>
-                    
-                    <script>
-                        window.onload = function() {
-                            window.print();
-                            setTimeout(function() {
-                                window.close();
-                            }, 1000);
-                        };
-                    <\/script>
-                </body>
-                </html>
-            `;
-            
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write(printContent);
-            printWindow.document.close();
         });
         
         // 视频点击播放/暂停
@@ -1200,54 +282,19 @@
             if (video.paused) {
                 video.play();
                 videoOverlay.classList.add('hidden');
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playBtn.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                `;
             } else {
                 video.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.innerHTML = `
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                `;
             }
-        });
-        
-        // 键盘快捷键支持
-        document.addEventListener('keydown', function(e) {
-            // 空格键播放/暂停
-            if (e.code === 'Space') {
-                e.preventDefault();
-                if (video.paused) {
-                    video.play();
-                    videoOverlay.classList.add('hidden');
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                } else {
-                    video.pause();
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                }
-            }
-            
-            // ESC键关闭信封页面
-            if (e.code === 'Escape' && letterPage.classList.contains('active')) {
-                closeLetter.click();
-            }
-            
-            // 回车键触发彩蛋按钮（当彩蛋按钮显示时）
-            if (e.code === 'Enter' && eggButtonContainer.classList.contains('show')) {
-                eggButton.click();
-            }
-            
-            // P键打印（当在信封页面时）
-            if (e.code === 'KeyP' && letterPage.classList.contains('active') && !e.ctrlKey) {
-                e.preventDefault();
-                printLetterBtn.click();
-            }
-        });
-        
-        // 视频加载错误处理
-        video.addEventListener('error', function() {
-            alert("视频加载失败，请检查视频文件路径或格式。");
-            console.error("视频加载错误，请确保视频文件存在且路径正确。");
-        });
-        
-        // 成功提示关闭
-        closeSuccessBtn.addEventListener('click', function() {
-            successMessage.classList.remove('active');
         });
         
         // 工具函数
@@ -1255,34 +302,18 @@
             const audio = new Audio();
             audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkles-300.mp3";
             audio.volume = 0.3;
-            audio.play().catch(e => console.log("音效播放失败:", e));
+            audio.play().catch(e => console.log("音效播放失败"));
         }
         
         function playTransitionSound() {
             const audio = new Audio();
             audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3";
             audio.volume = 0.4;
-            audio.play().catch(e => console.log("转场音效播放失败:", e));
+            audio.play().catch(e => console.log("转场音效播放失败"));
         }
         
-        function showLoading() {
-            loadingOverlay.classList.add('active');
-        }
-        
-        function hideLoading() {
-            loadingOverlay.classList.remove('active');
-        }
-        
-        function showSuccess(message) {
-            successText.textContent = message;
-            successMessage.classList.add('active');
-        }
-        
-        // 初始化页面
-        document.addEventListener('DOMContentLoaded', function() {
-            // 设置视频音量
-            video.volume = 0.7;
-        });
+        // 设置视频音量
+        video.volume = 0.7;
     </script>
 </body>
 </html>
