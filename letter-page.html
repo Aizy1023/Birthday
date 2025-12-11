@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* 这里是你的2560x1440背景图片 */
-            background-image: url('your-background-image.jpg');
+            /* 默认背景图片 */
+            background-image: url('./videos/照片.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -40,6 +40,41 @@
                 backdrop-filter: blur(3px);
                 z-index: 0;
             }
+
+        /* 背景图片上传区域 */
+        .background-upload {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .upload-btn {
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a69bd;
+            border: 2px solid #4a69bd;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(74, 105, 189, 0.2);
+            transition: all 0.3s ease;
+        }
+
+            .upload-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(74, 105, 189, 0.3);
+                background: #4a69bd;
+                color: white;
+            }
+
+        #bg-image-input {
+            display: none;
+        }
 
         /* 飘落的信封效果 */
         .falling-envelopes {
@@ -428,9 +463,15 @@
                 gap: 15px;
             }
 
-            .back-button {
+            .back-button, .upload-btn {
                 top: 10px;
-                left: 10px;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .background-upload {
+                top: 60px;
+                right: 10px;
             }
         }
 
@@ -490,6 +531,17 @@
         </svg>
         返回蛋糕页面
     </button>
+
+    <!-- 背景图片上传按钮 -->
+    <div class="background-upload">
+        <label class="upload-btn" for="bg-image-input">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
+            </svg>
+            更换背景
+        </label>
+        <input type="file" id="bg-image-input" accept="image/*" />
+    </div>
 
     <div class="page-title">
         <h1>
@@ -562,6 +614,7 @@
         const wishDisplay = document.getElementById('wish-display');
         const wishText = document.getElementById('wish-text');
         const fallingEnvelopes = document.getElementById('falling-envelopes');
+        const bgImageInput = document.getElementById('bg-image-input');
 
         // 初始化飘落的信封动画
         function initFallingEnvelopes() {
@@ -580,6 +633,7 @@
             }
         }
 
+        // 从代码中加载信件内容
         function loadLetterContent() {
             try {
                 // 直接写死的信件内容
@@ -594,7 +648,7 @@
 
 在新的一岁里，希望你能像朱迪一样勇敢、坚定，无论遇到什么挑战都能勇往直前。面对考试，希望你考前努力，临近考试临危不惧，不害怕，不乱想。相信你可以成功上岸！
 
-在新的一岁里，作为你的搭档，我也会一直不断改变以前不好的地方，对你加倍包容，改掉我自己不听劝，不理智的行为，遇见问题耐心跟你解决。一定不会暴躁！           
+在新的一岁里，作为你的搭档，我也会一直不断改变以前不好的地方，对你加倍包容，改掉我自己不听劝，不理智的行为，遇见问题耐心跟你解决。一定不会暴躁！
 
 在新的一岁里，希望你能更爱自己一点：不用为了追求 “完美” 而苛责自己，累了就好好休息；
 
@@ -625,22 +679,22 @@
                 letterContent.innerHTML = contentHTML;
 
                 // 检查是否有保存的愿望
-              //  checkSavedWish();
+                //checkSavedWish();
 
             } catch (error) {
                 console.error('加载信件内容失败:', error);
                 letterContent.innerHTML = `
-                    <div style="text-align: center; padding: 40px 0; color: #666;">
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="#ff6b6b" style="margin-bottom: 20px;">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                        </svg>
-                        <p style="font-size: 20px; margin-bottom: 10px;">无法加载信件内容</p>
-                        <p style="font-size: 14px; color: #999;">请检查代码配置</p>
-                        <button onclick="loadLetterContent()" style="margin-top: 20px; padding: 10px 20px; background: linear-gradient(135deg, #ff9a00, #ff6b6b); color: white; border: none; border-radius: 5px; cursor: pointer;">
-                            重试
-                        </button>
-                    </div>
-                `;
+                            <div style="text-align: center; padding: 40px 0; color: #666;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="#ff6b6b" style="margin-bottom: 20px;">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                                <p style="font-size: 20px; margin-bottom: 10px;">无法加载信件内容</p>
+                                <p style="font-size: 14px; color: #999;">请检查代码配置</p>
+                                <button onclick="loadLetterContent()" style="margin-top: 20px; padding: 10px 20px; background: linear-gradient(135deg, #ff9a00, #ff6b6b); color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                    重试
+                                </button>
+                            </div>
+                        `;
             }
         }
 
@@ -668,6 +722,28 @@
                     wishDisplay.appendChild(dateElement);
                 }
             }
+        }
+
+        // 更换背景图片功能
+        function setupBackgroundChange() {
+            bgImageInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                // 检查文件类型是否为图片
+                if (!file.type.startsWith('image/')) {
+                    showMessage('请选择图片文件', 'error');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    // 设置背景图片
+                    document.body.style.backgroundImage = `url(${event.target.result})`;
+                    showMessage('背景图片已更新', 'success');
+                };
+                reader.readAsDataURL(file);
+            });
         }
 
         // 返回蛋糕页面
@@ -797,120 +873,120 @@
             let wishHTML = '';
             if (savedWish && savedWish.trim() !== '') {
                 wishHTML = `
-                        <div style="margin-top: 40px; padding: 20px; background: #fff0f5; border-left: 4px solid #ff3366; border-radius: 5px;">
-                            <h3 style="color: #ff3366; margin-bottom: 10px;">21岁生日愿望</h3>
-                            <p style="color: #666; font-style: italic;">${savedWish}</p>
-                        </div>
-                    `;
+                            <div style="margin-top: 40px; padding: 20px; background: #fff0f5; border-left: 4px solid #ff3366; border-radius: 5px;">
+                                <h3 style="color: #ff3366; margin-bottom: 10px;">21岁生日愿望</h3>
+                                <p style="color: #666; font-style: italic;">${savedWish}</p>
+                            </div>
+                        `;
             }
 
             printWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>21岁生日信件</title>
-                        <meta charset="UTF-8">
-                        <style>
-                            @media print {
-                                @page {
-                                    size: A4;
-                                    margin: 20mm;
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <title>21岁生日信件</title>
+                            <meta charset="UTF-8">
+                            <style>
+                                @media print {
+                                    @page {
+                                        size: A4;
+                                        margin: 20mm;
+                                    }
+                                    body {
+                                        font-family: 'Microsoft YaHei', sans-serif;
+                                        line-height: 1.8;
+                                        color: #333;
+                                        background: linear-gradient(135deg, #fff0f5 0%, #ffe8cc 100%);
+                                        padding: 40px;
+                                    }
                                 }
                                 body {
+                                    max-width: 800px;
+                                    margin: 0 auto;
+                                    padding: 60px;
                                     font-family: 'Microsoft YaHei', sans-serif;
                                     line-height: 1.8;
                                     color: #333;
                                     background: linear-gradient(135deg, #fff0f5 0%, #ffe8cc 100%);
-                                    padding: 40px;
                                 }
-                            }
-                            body {
-                                max-width: 800px;
-                                margin: 0 auto;
-                                padding: 60px;
-                                font-family: 'Microsoft YaHei', sans-serif;
-                                line-height: 1.8;
-                                color: #333;
-                                background: linear-gradient(135deg, #fff0f5 0%, #ffe8cc 100%);
-                            }
-                            .print-header {
-                                text-align: center;
-                                margin-bottom: 50px;
-                                padding-bottom: 30px;
-                                border-bottom: 3px solid #ff9a00;
-                            }
-                            .print-header h1 {
-                                color: #ff3366;
-                                font-size: 36px;
-                                margin-bottom: 15px;
-                            }
-                            .age-badge {
-                                display: inline-block;
-                                background: linear-gradient(135deg, #ff3366, #ff9933);
-                                color: white;
-                                padding: 5px 15px;
-                                border-radius: 20px;
-                                font-weight: bold;
-                                margin: 0 5px;
-                            }
-                            .print-content {
-                                font-size: 20px;
-                                margin-bottom: 50px;
-                                padding: 30px;
-                                background: rgba(255, 255, 255, 0.9);
-                                border-radius: 15px;
-                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                            }
-                            .print-signature {
-                                text-align: right;
-                                margin-top: 80px;
-                                font-family: 'Brush Script MT', cursive;
-                                font-size: 36px;
-                                color: #0c2461;
-                                border-top: 2px dashed #ff9a00;
-                                padding-top: 30px;
-                            }
-                            .print-footer {
-                                text-align: center;
-                                margin-top: 60px;
-                                color: #888;
-                                font-size: 14px;
-                                border-top: 1px dashed #ddd;
-                                padding-top: 20px;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="print-header">
-                            <h1><span class="age-badge">21岁</span>生日信件</h1>
-                            <p style="color: #666; font-style: italic;">专属你的生日祝福</p>
-                        </div>
+                                .print-header {
+                                    text-align: center;
+                                    margin-bottom: 50px;
+                                    padding-bottom: 30px;
+                                    border-bottom: 3px solid #ff9a00;
+                                }
+                                .print-header h1 {
+                                    color: #ff3366;
+                                    font-size: 36px;
+                                    margin-bottom: 15px;
+                                }
+                                .age-badge {
+                                    display: inline-block;
+                                    background: linear-gradient(135deg, #ff3366, #ff9933);
+                                    color: white;
+                                    padding: 5px 15px;
+                                    border-radius: 20px;
+                                    font-weight: bold;
+                                    margin: 0 5px;
+                                }
+                                .print-content {
+                                    font-size: 20px;
+                                    margin-bottom: 50px;
+                                    padding: 30px;
+                                    background: rgba(255, 255, 255, 0.9);
+                                    border-radius: 15px;
+                                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                                }
+                                .print-signature {
+                                    text-align: right;
+                                    margin-top: 80px;
+                                    font-family: 'Brush Script MT', cursive;
+                                    font-size: 36px;
+                                    color: #0c2461;
+                                    border-top: 2px dashed #ff9a00;
+                                    padding-top: 30px;
+                                }
+                                .print-footer {
+                                    text-align: center;
+                                    margin-top: 60px;
+                                    color: #888;
+                                    font-size: 14px;
+                                    border-top: 1px dashed #ddd;
+                                    padding-top: 20px;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class="print-header">
+                                <h1><span class="age-badge">21岁</span>生日信件</h1>
+                                <p style="color: #666; font-style: italic;">专属你的生日祝福</p>
+                            </div>
 
-                        <div class="print-content">
-                            ${content}
-                        </div>
+                            <div class="print-content">
+                                ${content}
+                            </div>
 
-                        ${wishHTML}
+                            ${wishHTML}
 
-                        <div class="print-signature">
-                            ${signature}
-                        </div>
+                            <div class="print-signature">
+                                ${signature}
+                            </div>
 
-                        <div class="print-footer">
-                            此信件为21岁生日专属定制 | 保存日期: ${new Date().toLocaleDateString('zh-CN')}
-                        </div>
+                            <div class="print-footer">
+                                此信件为21岁生日专属定制 | 保存日期: ${new Date().toLocaleDateString('zh-CN')}
+                            </div>
 
-                        <script>
-                            window.onload = function() {
-                                window.print();
-                                setTimeout(function() {
-                                    window.close();
-                                }, 1000);
-                            };
-                        <\/script>
-                    </body>
-                    </html>
-                `);
+                            <script>
+                                window.onload = function() {
+                                    window.print();
+                                    setTimeout(function() {
+                                        window.close();
+                                    }, 1000);
+                                };
+                            <\/script>
+                        </body>
+                        </html>
+                    `);
             printWindow.document.close();
         });
 
@@ -957,6 +1033,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             initFallingEnvelopes();
             loadLetterContent();
+            setupBackgroundChange(); // 初始化背景更换功能
 
             // 为按钮添加点击效果
             [downloadPdfBtn, printLetterBtn].forEach(btn => {
