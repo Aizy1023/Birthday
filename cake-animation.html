@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>21岁生日蛋糕许愿</title>
     <style>
         * {
@@ -47,12 +47,15 @@
                 transform: translateY(-100px) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(100vh) rotate(360deg);
                 opacity: 0;
@@ -68,16 +71,16 @@
             position: relative;
         }
 
-        .page-title h1 {
-            font-size: 48px;
-            background: linear-gradient(135deg, #ff3366, #ff9933, #ff3366);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-            font-family: 'Comic Sans MS', cursive;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+            .page-title h1 {
+                font-size: 48px;
+                background: linear-gradient(135deg, #ff3366, #ff9933, #ff3366);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                margin-bottom: 10px;
+                font-family: 'Comic Sans MS', cursive;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
 
         .age-number {
             font-size: 72px;
@@ -91,14 +94,11 @@
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px rgba(255, 51, 102, 0.5),
-                             0 0 20px rgba(255, 51, 102, 0.3),
-                             0 0 30px rgba(255, 51, 102, 0.2);
+                text-shadow: 0 0 10px rgba(255, 51, 102, 0.5), 0 0 20px rgba(255, 51, 102, 0.3), 0 0 30px rgba(255, 51, 102, 0.2);
             }
+
             to {
-                text-shadow: 0 0 20px rgba(255, 51, 102, 0.8),
-                             0 0 30px rgba(255, 51, 102, 0.6),
-                             0 0 40px rgba(255, 51, 102, 0.4);
+                text-shadow: 0 0 20px rgba(255, 51, 102, 0.8), 0 0 30px rgba(255, 51, 102, 0.6), 0 0 40px rgba(255, 51, 102, 0.4);
             }
         }
 
@@ -173,16 +173,19 @@
             font-size: 80px;
             font-weight: bold;
             color: #ff9933;
-            text-shadow: 2px 2px 0 #ff3366,
-                         -2px -2px 0 #ffcc00,
-                         0 0 20px rgba(255, 255, 255, 0.8);
+            text-shadow: 2px 2px 0 #ff3366, -2px -2px 0 #ffcc00, 0 0 20px rgba(255, 255, 255, 0.8);
             z-index: 3;
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-20px); }
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-20px);
+            }
         }
 
         /* 蜡烛 */
@@ -205,13 +208,13 @@
             box-shadow: 0 8px 20px rgba(74, 105, 189, 0.3);
         }
 
-        .candle:nth-child(2) {
-            background: linear-gradient(to bottom, #ffffff, #ff3366, #cc0066);
-        }
+            .candle:nth-child(2) {
+                background: linear-gradient(to bottom, #ffffff, #ff3366, #cc0066);
+            }
 
-        .candle:nth-child(3) {
-            background: linear-gradient(to bottom, #ffffff, #ff9933, #ff6600);
-        }
+            .candle:nth-child(3) {
+                background: linear-gradient(to bottom, #ffffff, #ff9933, #ff6600);
+            }
 
         /* 蜡烛火焰 */
         .flame {
@@ -224,35 +227,38 @@
             background: linear-gradient(to bottom, #ffff00, #ff9933, #ff3366);
             border-radius: 50% 50% 30% 30%;
             animation: flicker 0.6s infinite alternate;
-            box-shadow: 0 0 40px rgba(255, 153, 51, 0.7),
-                        0 0 60px rgba(255, 51, 102, 0.5);
+            box-shadow: 0 0 40px rgba(255, 153, 51, 0.7), 0 0 60px rgba(255, 51, 102, 0.5);
             filter: blur(1px);
             transition: all 0.8s ease;
         }
 
-        .flame.extinguished {
-            opacity: 0;
-            transform: translateX(-50%) scale(0);
-            box-shadow: none;
-        }
+            .flame.extinguished {
+                opacity: 0;
+                transform: translateX(-50%) scale(0);
+                box-shadow: none;
+            }
 
         @keyframes flicker {
             0% {
                 transform: translateX(-50%) scale(1, 1);
                 background: linear-gradient(to bottom, #ffff00, #ff9933);
             }
+
             25% {
                 transform: translateX(-50%) scale(1.2, 0.9);
                 background: linear-gradient(to bottom, #ffff00, #ff3366);
             }
+
             50% {
                 transform: translateX(-50%) scale(0.9, 1.1);
                 background: linear-gradient(to bottom, #ffff00, #ff9933);
             }
+
             75% {
                 transform: translateX(-50%) scale(1.1, 0.95);
                 background: linear-gradient(to bottom, #ffff00, #ff6600);
             }
+
             100% {
                 transform: translateX(-50%) scale(1, 1);
                 background: linear-gradient(to bottom, #ffff00, #ff3366);
@@ -279,17 +285,18 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        .sprinkle.heart {
-            font-size: 24px;
-            animation: heartFloat 5s infinite ease-in-out;
-        }
+            .sprinkle.heart {
+                font-size: 24px;
+                animation: heartFloat 5s infinite ease-in-out;
+            }
 
         @keyframes heartFloat {
-            0%, 100% { 
+            0%, 100% {
                 transform: translateY(0) rotate(0deg) scale(1);
                 opacity: 1;
             }
-            50% { 
+
+            50% {
                 transform: translateY(-40px) rotate(180deg) scale(1.2);
                 opacity: 0.8;
             }
@@ -316,8 +323,13 @@
         }
 
         @keyframes rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         /* 许愿按钮 */
@@ -347,34 +359,34 @@
             z-index: 1;
         }
 
-        .wish-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #cc0066, #ff3366);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
+            .wish-button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #cc0066, #ff3366);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: -1;
+            }
 
-        .wish-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 51, 102, 0.7);
-        }
+            .wish-button:hover {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 20px 40px rgba(255, 51, 102, 0.7);
+            }
 
-        .wish-button:hover::before {
-            opacity: 1;
-        }
+                .wish-button:hover::before {
+                    opacity: 1;
+                }
 
-        .wish-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: 0 10px 25px rgba(255, 51, 102, 0.3);
-        }
+            .wish-button:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: 0 10px 25px rgba(255, 51, 102, 0.3);
+            }
 
         /* 下一个页面按钮 */
         .next-page-btn-container {
@@ -387,10 +399,10 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .next-page-btn-container.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
+            .next-page-btn-container.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
         .next-page-btn {
             background: linear-gradient(135deg, #ff9933, #ff6600);
@@ -410,10 +422,10 @@
             overflow: hidden;
         }
 
-        .next-page-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 153, 51, 0.7);
-        }
+            .next-page-btn:hover {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 20px 40px rgba(255, 153, 51, 0.7);
+            }
 
         /* 返回按钮 */
         .back-button {
@@ -436,12 +448,12 @@
             z-index: 5;
         }
 
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
-            background: #ff3366;
-            color: white;
-        }
+            .back-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+                background: #ff3366;
+                color: white;
+            }
 
         /* 许愿模态框 */
         .wish-modal {
@@ -461,10 +473,10 @@
             backdrop-filter: blur(10px);
         }
 
-        .wish-modal.active {
-            opacity: 1;
-            pointer-events: all;
-        }
+            .wish-modal.active {
+                opacity: 1;
+                pointer-events: all;
+            }
 
         .wish-content {
             background: linear-gradient(135deg, #fff0f5, #ffe6f2);
@@ -476,8 +488,7 @@
             transform: scale(0.9);
             transition: transform 0.5s ease;
             border: 5px solid transparent;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(135deg, #ff3366, #ff9933);
+            background-image: linear-gradient(white, white), linear-gradient(135deg, #ff3366, #ff9933);
             background-origin: border-box;
             background-clip: padding-box, border-box;
         }
@@ -526,12 +537,12 @@
             transition: all 0.3s ease;
         }
 
-        .wish-input:focus {
-            outline: none;
-            border-color: #ff3366;
-            box-shadow: 0 0 0 5px rgba(255, 51, 102, 0.1);
-            background: white;
-        }
+            .wish-input:focus {
+                outline: none;
+                border-color: #ff3366;
+                box-shadow: 0 0 0 5px rgba(255, 51, 102, 0.1);
+                background: white;
+            }
 
         .wish-actions {
             display: flex;
@@ -555,20 +566,20 @@
             box-shadow: 0 10px 25px rgba(255, 51, 102, 0.3);
         }
 
-        .wish-submit-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(255, 51, 102, 0.5);
-        }
+            .wish-submit-btn:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 15px 30px rgba(255, 51, 102, 0.5);
+            }
 
         .wish-cancel-btn {
             background: #f0f0f0;
             color: #666;
         }
 
-        .wish-cancel-btn:hover {
-            background: #e0e0e0;
-            transform: translateY(-3px);
-        }
+            .wish-cancel-btn:hover {
+                background: #e0e0e0;
+                transform: translateY(-3px);
+            }
 
         /* 生日祝福语 */
         .birthday-message {
@@ -586,52 +597,52 @@
             .page-title h1 {
                 font-size: 36px;
             }
-            
+
             .age-number {
                 font-size: 56px;
             }
-            
+
             .cake {
                 width: 300px;
                 height: 200px;
             }
-            
+
             .candles {
                 gap: 40px;
             }
-            
+
             .number-decoration {
                 font-size: 60px;
                 top: -80px;
             }
-            
+
             .wish-button, .next-page-btn {
                 padding: 16px 30px;
                 font-size: 18px;
             }
-            
+
             .wish-button-container {
                 bottom: 20px;
                 right: 20px;
             }
-            
+
             .next-page-btn-container {
                 bottom: 20px;
                 left: 20px;
             }
-            
+
             .back-button {
                 top: 10px;
                 left: 10px;
             }
-            
+
             .wish-content {
                 padding: 30px;
             }
-            
-            .wish-content h2 {
-                font-size: 28px;
-            }
+
+                .wish-content h2 {
+                    font-size: 28px;
+                }
         }
 
         /* 成功许愿效果 */
@@ -647,9 +658,9 @@
             transition: opacity 1s ease;
         }
 
-        .wish-made-effect.active {
-            opacity: 1;
-        }
+            .wish-made-effect.active {
+                opacity: 1;
+            }
 
         .wish-confetti {
             position: absolute;
@@ -665,6 +676,7 @@
                 transform: translateY(-100px) rotate(0deg);
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(100vh) rotate(360deg);
                 opacity: 0;
@@ -673,20 +685,18 @@
     </style>
 </head>
 <body>
-    <!-- 飘落的星光 -->
-    <div class="falling-stars" id="falling-stars"></div>
-
+    <!-- 飘落的星光 --> <div class="falling-stars" id="falling-stars"></div>
     <!-- 返回按钮 -->
     <button class="back-button" id="back-button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
         </svg>
         返回首页
     </button>
 
     <div class="page-title">
         <h1>
-            欢迎来到你的 
+            欢迎来到你的
             <span class="age-number">21</span>
             岁生日！
         </h1>
@@ -705,14 +715,14 @@
     <div class="cake-container">
         <!-- 21岁数字装饰 -->
         <div class="number-decoration">🎂 21 🎂</div>
-        
+
         <!-- 蛋糕 -->
         <div class="cake">
             <div class="cake-base"></div>
             <div class="cake-middle"></div>
             <div class="cake-top"></div>
         </div>
-        
+
         <!-- 蜡烛 -->
         <div class="candles" id="candles">
             <div class="candle">
@@ -725,7 +735,7 @@
                 <div class="flame" id="flame3"></div>
             </div>
         </div>
-        
+
         <!-- 装饰品 -->
         <div class="decorations" id="decorations"></div>
     </div>
@@ -734,7 +744,7 @@
     <div class="wish-button-container">
         <button class="wish-button" id="wish-button">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
             </svg>
             许下21岁生日愿望
         </button>
@@ -744,7 +754,7 @@
     <div class="next-page-btn-container" id="next-page-btn-container">
         <button class="next-page-btn" id="next-page-btn">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
             </svg>
             开启21岁神秘信件
         </button>
@@ -759,16 +769,14 @@
                 这是一个全新的开始，充满无限可能。<br>
                 请许下你的<span class="age-badge">21岁</span>生日愿望吧！
             </p>
-            <textarea 
-                class="wish-input" 
-                id="wish-input" 
-                placeholder="在这里写下你21岁的愿望...（愿望会保存在你的浏览器中）"
-                maxlength="300"
-            ></textarea>
+            <textarea class="wish-input"
+                      id="wish-input"
+                      placeholder="在这里写下你21岁的愿望...（愿望会保存在你的浏览器中）"
+                      maxlength="300"></textarea>
             <div class="wish-actions">
                 <button class="wish-submit-btn" id="wish-submit-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="margin-right: 8px;">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19l12-12-1.41-1.41z" />
                     </svg>
                     许愿并吹灭蜡烛
                 </button>
@@ -795,30 +803,37 @@
         const fallingStars = document.getElementById('falling-stars');
         const ageTextRing = document.getElementById('age-text-ring');
         const wishMadeEffect = document.getElementById('wish-made-effect');
-        
+
+        // 保存按钮初始内容（用于刷新后恢复）
+        const initialWishButtonHTML = wishButton.innerHTML;
+
         // 状态变量
         let isCandleLit = true;
         let wishMade = false;
-        
+
         // 初始化星光效果
         function initFallingStars() {
+            fallingStars.innerHTML = '';
             for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.width = Math.random() * 3 + 1 + 'px';
-                star.style.height = star.style.width;
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
                 star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
                 star.style.animationDuration = (Math.random() * 5 + 5) + 's';
                 star.style.animationDelay = Math.random() * 5 + 's';
                 star.style.opacity = Math.random() * 0.5 + 0.2;
                 fallingStars.appendChild(star);
             }
         }
-        
+
         // 初始化装饰品
         function initDecorations() {
+            decorations.innerHTML = '';
             const colors = ['#ff3366', '#ff9933', '#ffcc00', '#4a69bd', '#9C27B0', '#4CAF50'];
-            
+
             // 普通装饰
             for (let i = 0; i < 30; i++) {
                 const sprinkle = document.createElement('div');
@@ -830,7 +845,7 @@
                 sprinkle.style.animationDuration = (Math.random() * 3 + 3) + 's';
                 decorations.appendChild(sprinkle);
             }
-            
+
             // 爱心装饰
             for (let i = 0; i < 10; i++) {
                 const heart = document.createElement('div');
@@ -844,147 +859,152 @@
                 decorations.appendChild(heart);
             }
         }
-        
+
         // 初始化21岁文字环绕
         function initAgeTextRing() {
+            ageTextRing.innerHTML = '';
             const texts = ['21', '🎂', '✨', '❤️', '🎉', '🌟', '🥳', '🎁'];
             const radius = 200;
-            
+
             texts.forEach((text, index) => {
                 const angle = (index * 360) / texts.length;
                 const radian = (angle * Math.PI) / 180;
-                
+
                 const textElement = document.createElement('div');
                 textElement.className = 'age-text';
                 textElement.textContent = text;
-                textElement.style.left = 50 + radius * Math.cos(radian) / 2 + '%';
-                textElement.style.top = 50 + radius * Math.sin(radian) / 2 + '%';
+                // 改用百分比并稍微调整半径比例，保证响应式表现更好
+                textElement.style.left = (50 + (radius * Math.cos(radian) / 2) / 2) + '%';
+                textElement.style.top = (50 + (radius * Math.sin(radian) / 2) / 2) + '%';
                 textElement.style.transform = `rotate(${angle + 90}deg)`;
                 textElement.style.fontSize = (text.length === 2 ? '28px' : '32px');
-                
+
                 ageTextRing.appendChild(textElement);
             });
         }
-        
+
         // 返回首页
-        backButton.addEventListener('click', function() {
-            playTransitionSound();
+        backButton.addEventListener('click', function () {
+            // 小的反馈
+            // 如果你有音效函数可以在这里调用
             window.location.href = 'index.html';
         });
-        
+
         // 打开许愿模态框
-        wishButton.addEventListener('click', function() {
+        wishButton.addEventListener('click', function () {
             if (!isCandleLit) return;
-            
+
             wishModal.classList.add('active');
             wishInput.focus();
-            
-            // 播放星星音效
+
+            // 播放星星音效（如果实现了）
             playStarSound();
         });
-        
+
         // 关闭许愿模态框
-        wishCancelBtn.addEventListener('click', function() {
+        wishCancelBtn.addEventListener('click', function () {
             wishModal.classList.remove('active');
             wishInput.value = '';
         });
-        
+
         // 提交愿望并吹灭蜡烛
-        wishSubmitBtn.addEventListener('click', function() {
+        wishSubmitBtn.addEventListener('click', function () {
             const wish = wishInput.value.trim();
-            
-            // 保存愿望到本地存储
+
+            // 保存愿望到本地存储（可选）
             if (wish) {
                 localStorage.setItem('21stBirthdayWish', wish);
                 localStorage.setItem('wishMadeDate', new Date().toISOString());
                 console.log('21岁愿望已保存:', wish);
             }
-            
+
             // 关闭模态框
             wishModal.classList.remove('active');
-            
+
             // 显示成功许愿效果
             showWishMadeEffect();
-            
-            // 吹灭蜡烛
+
+            // 吹灭蜡烛（延迟以便看到效果）
             setTimeout(() => {
                 blowOutCandles();
             }, 1000);
-            
-            // 标记已许愿
+
+            // 标记已许愿（仅在当前会话中生效）
             wishMade = true;
             wishButton.disabled = true;
             wishButton.innerHTML = `
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-                21岁愿望已许下！✨
-            `;
-            
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                        <path d="M9 16.17 4.83 12 3.41 13.41 9 19l12-12L19.59 5.59z"/>
+                    </svg>
+                    21岁愿望已许下！✨
+                `;
+
             // 显示下一个页面按钮
             setTimeout(() => {
                 nextPageBtnContainer.classList.add('show');
             }, 3000);
         });
-        
+
         // 显示成功许愿效果
         function showWishMadeEffect() {
             wishMadeEffect.classList.add('active');
-            
+
             // 创建彩色纸片
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'wish-confetti';
                 confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.background = `linear-gradient(135deg, 
-                    hsl(${Math.random() * 360}, 100%, 60%), 
-                    hsl(${Math.random() * 360}, 100%, 50%))`;
-                confetti.style.width = Math.random() * 20 + 10 + 'px';
+                confetti.style.background = `linear-gradient(135deg,
+                        hsl(${Math.random() * 360}, 100%, 60%),
+                        hsl(${Math.random() * 360}, 100%, 50%))`;
+                const size = Math.random() * 20 + 10;
+                confetti.style.width = size + 'px';
                 confetti.style.height = confetti.style.width;
                 confetti.style.animationDuration = Math.random() * 2 + 1 + 's';
                 confetti.style.animationDelay = Math.random() * 0.5 + 's';
                 wishMadeEffect.appendChild(confetti);
-                
+
                 // 清理
                 setTimeout(() => {
                     confetti.remove();
                 }, 3000);
             }
-            
+
             // 3秒后隐藏效果
             setTimeout(() => {
                 wishMadeEffect.classList.remove('active');
                 wishMadeEffect.innerHTML = '';
             }, 3000);
         }
-        
+
         // 吹灭蜡烛动画
         function blowOutCandles() {
             if (!isCandleLit) return;
-            
-            // 播放吹气音效
+
+            // 播放吹气音效（如果实现了）
             playBlowSound();
-            
+
             // 逐个吹灭蜡烛
             flames.forEach((flame, index) => {
                 setTimeout(() => {
-                    flame.classList.add('extinguished');
-                    
-                    // 添加烟雾效果
-                    createSmokeEffect(flame);
-                    
+                    if (flame) {
+                        flame.classList.add('extinguished');
+
+                        // 添加烟雾效果
+                        createSmokeEffect(flame);
+                    }
                 }, index * 400);
             });
-            
+
             isCandleLit = false;
-            
-            // 播放成功音效
+
+            // 播放成功音效（如果实现了）
             setTimeout(() => {
                 playSuccessSound();
             }, 1500);
         }
-        
-        // 创建烟雾效果
+
+        // 创建烟雾效果（简单实现）
         function createSmokeEffect(flame) {
             const smoke = document.createElement('div');
             smoke.style.position = 'absolute';
@@ -997,103 +1017,115 @@
             smoke.style.transform = 'translate(-50%, 0)';
             smoke.style.filter = 'blur(15px)';
             smoke.style.zIndex = '4';
-            
+            smoke.style.opacity = '1';
             flame.parentElement.appendChild(smoke);
-            
-            // 烟雾动画
-            const animation = smoke.animate([
-                { 
-                    opacity: 1,
-                    transform: 'translate(-50%, 0) scale(1)',
-                    filter: 'blur(15px)'
-                },
-                { 
-                    opacity: 0,
-                    transform: 'translate(-50%, -150px) scale(3)',
-                    filter: 'blur(30px)'
-                }
+
+            // 轻微上升并淡出
+            smoke.animate([
+                { transform: 'translate(-50%, 0) translateY(0)', opacity: 1 },
+                { transform: 'translate(-50%, 0) translateY(-80px)', opacity: 0 }
             ], {
-                duration: 3000,
-                easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                duration: 1800,
+                easing: 'ease-out',
+                fill: 'forwards'
             });
-            
-            animation.onfinish = () => smoke.remove();
+
+            setTimeout(() => {
+                smoke.remove();
+            }, 2000);
         }
-        
-        // 前往信封页面
-        nextPageBtn.addEventListener('click', function() {
-            playTransitionSound();
-            window.location.href = 'letter-page.html';
+
+        // 下一页按钮（跳转到信封页面或示例页面）
+        nextPageBtn.addEventListener('click', function () {
+            // 如果有 envelope.html 或其他页面请修改为正确的链接
+            window.location.href = 'envelope.html';
         });
-        
-        // 点击模态框背景关闭
-        wishModal.addEventListener('click', function(e) {
-            if (e.target === wishModal) {
-                wishCancelBtn.click();
-            }
-        });
-        
-        // 工具函数
+
+        // 一些占位音效函数（可替换为真实音频）
         function playStarSound() {
-            const audio = new Audio();
-            audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkles-300.mp3";
-            audio.volume = 0.4;
-            audio.play().catch(e => console.log("音效播放失败"));
+            // 可以在这里实现 WebAudio 的短促音效，当前为占位
+            // console.log('playStarSound');
         }
-        
         function playBlowSound() {
-            const audio = new Audio();
-            audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-whoosh-1126.mp3";
-            audio.volume = 0.6;
-            audio.play().catch(e => console.log("音效播放失败"));
+            // console.log('playBlowSound');
         }
-        
         function playSuccessSound() {
-            const audio = new Audio();
-            audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3";
-            audio.volume = 0.5;
-            audio.play().catch(e => console.log("音效播放失败"));
+            // console.log('playSuccessSound');
         }
-        
         function playTransitionSound() {
-            const audio = new Audio();
-            audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3";
-            audio.volume = 0.4;
-            audio.play().catch(e => console.log("转场音效播放失败"));
+            // console.log('playTransitionSound');
         }
-        
-        // 键盘快捷键
-        document.addEventListener('keydown', function(e) {
-            // ESC键关闭模态框
-            if (e.code === 'Escape' && wishModal.classList.contains('active')) {
-                wishCancelBtn.click();
-            }
-            
-            // Enter键提交愿望
-            if (e.code === 'Enter' && e.ctrlKey && wishModal.classList.contains('active')) {
-                wishSubmitBtn.click();
-            }
-        });
-        
-        // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
+
+        // 初始化并确保每次刷新后可以重新许愿
+        function initApp() {
+            // 初始化视觉元素
             initFallingStars();
             initDecorations();
             initAgeTextRing();
-            
-            // 检查是否已经许过愿
-            const savedWish = localStorage.getItem('21stBirthdayWish');
-            if (savedWish) {
-                wishMade = true;
-                wishButton.disabled = true;
-                wishButton.innerHTML = `
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                    </svg>
-                    21岁愿望已许下！✨
-                `;
-                blowOutCandles();
-                nextPageBtnContainer.classList.add('show');
+
+            // 恢复蜡烛点燃状态（确保刷新后可以重新许愿）
+            isCandleLit = true;
+            wishMade = false;
+            wishButton.disabled = false;
+            wishButton.innerHTML = initialWishButtonHTML;
+
+            // 移除蜡烛熄灭类（如果存在）
+            flames.forEach(f => {
+                if (f) {
+                    f.classList.remove('extinguished');
+                    // 移除可能遗留的父级烟雾元素
+                    const parent = f.parentElement;
+                    if (parent) {
+                        Array.from(parent.querySelectorAll('div')).forEach(child => {
+                            if (child !== f) {
+                                // 只移除样式化为烟雾或临时元素（保守删除）
+                                if (child.style && child.style.filter && child.style.filter.indexOf('blur') !== -1) {
+                                    child.remove();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+
+            // 隐藏并清空许愿效果区域
+            nextPageBtnContainer.classList.remove('show');
+            wishMadeEffect.classList.remove('active');
+            wishMadeEffect.innerHTML = '';
+
+            // 关闭模态框并清空输入
+            wishModal.classList.remove('active');
+            wishInput.value = '';
+
+            // 注意：保留 localStorage 中保存的愿望内容（如果你想每次刷新也清除，可以取消下一行注释）
+            // localStorage.removeItem('21stBirthdayWish');
+            // localStorage.removeItem('wishMadeDate');
+        }
+
+        // 页面载入时初始化
+        window.addEventListener('load', function () {
+            initApp();
+        });
+
+        // 允许用户按 Esc 关闭模态框
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && wishModal.classList.contains('active')) {
+                wishModal.classList.remove('active');
+            }
+        });
+
+        // 点击模态框背景关闭
+        wishModal.addEventListener('click', function (e) {
+            if (e.target === wishModal) {
+                wishModal.classList.remove('active');
+            }
+        });
+
+        // 防止页面被某些浏览器缓存导致 UI 未刷新（保证每次刷新都能重新许愿）
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                // 页面是从 bfcache 恢复的，重新初始化状态
+                initApp();
             }
         });
     </script>
