@@ -14,7 +14,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* 这里是你的2560x1440背景图片 */
-            background-image: url('./videos/照片.png');
+            background-image: url('your-background-image.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -28,21 +28,18 @@
             position: relative;
         }
 
-        /* 背景遮罩层，确保文字可读性 */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, 
-                rgba(12, 36, 97, 0.85) 0%, 
-                rgba(30, 55, 153, 0.8) 50%, 
-                rgba(74, 105, 189, 0.75) 100%);
-            backdrop-filter: blur(3px);
-            z-index: 0;
-        }
+            /* 背景遮罩层，确保文字可读性 */
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(12, 36, 97, 0.85) 0%, rgba(30, 55, 153, 0.8) 50%, rgba(74, 105, 189, 0.75) 100%);
+                backdrop-filter: blur(3px);
+                z-index: 0;
+            }
 
         /* 飘落的信封效果 */
         .falling-envelopes {
@@ -68,12 +65,15 @@
                 transform: translateY(-100px) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.5;
             }
+
             90% {
                 opacity: 0.5;
             }
+
             100% {
                 transform: translateY(100vh) rotate(360deg);
                 opacity: 0;
@@ -101,12 +101,12 @@
             z-index: 10;
         }
 
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
-            background: #ff3366;
-            color: white;
-        }
+            .back-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+                background: #ff3366;
+                color: white;
+            }
 
         /* 页面标题 */
         .page-title {
@@ -117,16 +117,16 @@
             z-index: 2;
         }
 
-        .page-title h1 {
-            font-size: 52px;
-            background: linear-gradient(135deg, #ff9a00, #ff6b6b, #ff9a00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 15px;
-            font-family: 'Comic Sans MS', cursive;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+            .page-title h1 {
+                font-size: 52px;
+                background: linear-gradient(135deg, #ff9a00, #ff6b6b, #ff9a00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                margin-bottom: 15px;
+                font-family: 'Comic Sans MS', cursive;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
 
         .age-badge {
             display: inline-block;
@@ -156,8 +156,7 @@
             width: 90%;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
             border: 12px solid transparent;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(135deg, #ff9a00, #ff6b6b, #4a69bd);
+            background-image: linear-gradient(white, white), linear-gradient(135deg, #ff9a00, #ff6b6b, #4a69bd);
             background-origin: border-box;
             background-clip: padding-box, border-box;
             margin-bottom: 40px;
@@ -224,29 +223,29 @@
             z-index: 1;
         }
 
-        .letter-content p {
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
-            text-align: justify;
-            padding-left: 20px;
-            border-left: 3px solid transparent;
-            transition: border-left 0.3s ease;
-        }
+            .letter-content p {
+                margin-bottom: 30px;
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInUp 0.5s ease forwards;
+                text-align: justify;
+                padding-left: 20px;
+                border-left: 3px solid transparent;
+                transition: border-left 0.3s ease;
+            }
 
-        .letter-content p:hover {
-            border-left: 3px solid #ff9a00;
-        }
+                .letter-content p:hover {
+                    border-left: 3px solid #ff9a00;
+                }
 
-        .letter-content .highlight {
-            background: linear-gradient(120deg, rgba(255, 154, 0, 0.2), rgba(255, 107, 107, 0.2));
-            padding: 3px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #0c2461;
-            border-left: 3px solid #ff9a00;
-        }
+            .letter-content .highlight {
+                background: linear-gradient(120deg, rgba(255, 154, 0, 0.2), rgba(255, 107, 107, 0.2));
+                padding: 3px 10px;
+                border-radius: 5px;
+                font-weight: bold;
+                color: #0c2461;
+                border-left: 3px solid #ff9a00;
+            }
 
         @keyframes fadeInUp {
             to {
@@ -268,27 +267,34 @@
             border-top: 3px dashed rgba(255, 154, 0, 0.4);
         }
 
-        .letter-signature::before {
-            content: '✨';
-            position: absolute;
-            right: 10px;
-            top: -10px;
-            font-size: 32px;
-            animation: twinkle 2s infinite;
-        }
+            .letter-signature::before {
+                content: '✨';
+                position: absolute;
+                right: 10px;
+                top: -10px;
+                font-size: 32px;
+                animation: twinkle 2s infinite;
+            }
 
-        .letter-signature .age-mention {
-            display: block;
-            font-size: 24px;
-            color: #ff3366;
-            margin-top: 10px;
-            font-family: 'Arial', sans-serif;
-            font-style: italic;
-        }
+            .letter-signature .age-mention {
+                display: block;
+                font-size: 24px;
+                color: #ff3366;
+                margin-top: 10px;
+                font-family: 'Arial', sans-serif;
+                font-style: italic;
+            }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
         }
 
         /* 功能按钮区域 */
@@ -321,40 +327,40 @@
             z-index: 1;
         }
 
-        .action-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff6b6b, #ff9a00);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
+            .action-btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #ff6b6b, #ff9a00);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: -1;
+            }
 
-        .action-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
-        }
+            .action-btn:hover {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
+            }
 
-        .action-btn:hover::before {
-            opacity: 1;
-        }
+                .action-btn:hover::before {
+                    opacity: 1;
+                }
 
-        .action-btn.secondary {
-            background: linear-gradient(135deg, #4a69bd, #1e3799);
-            box-shadow: 0 10px 30px rgba(74, 105, 189, 0.4);
-        }
+            .action-btn.secondary {
+                background: linear-gradient(135deg, #4a69bd, #1e3799);
+                box-shadow: 0 10px 30px rgba(74, 105, 189, 0.4);
+            }
 
-        .action-btn.secondary::before {
-            background: linear-gradient(135deg, #1e3799, #4a69bd);
-        }
+                .action-btn.secondary::before {
+                    background: linear-gradient(135deg, #1e3799, #4a69bd);
+                }
 
-        .action-btn.secondary:hover {
-            box-shadow: 0 15px 35px rgba(74, 105, 189, 0.6);
-        }
+                .action-btn.secondary:hover {
+                    box-shadow: 0 15px 35px rgba(74, 105, 189, 0.6);
+                }
 
         /* 生日愿望显示区域 */
         .wish-display {
@@ -367,61 +373,61 @@
             position: relative;
         }
 
-        .wish-display h3 {
-            color: #ff3366;
-            font-size: 22px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+            .wish-display h3 {
+                color: #ff3366;
+                font-size: 22px;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
 
-        .wish-display p {
-            color: #666;
-            font-size: 18px;
-            line-height: 1.6;
-            font-style: italic;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            border: 1px dashed #ff3366;
-        }
+            .wish-display p {
+                color: #666;
+                font-size: 18px;
+                line-height: 1.6;
+                font-style: italic;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 10px;
+                border: 1px dashed #ff3366;
+            }
 
         /* 响应式设计 */
         @media (max-width: 768px) {
             .page-title h1 {
                 font-size: 36px;
             }
-            
+
             .age-badge {
                 font-size: 20px;
                 padding: 5px 15px;
             }
-            
+
             .letter-container {
                 padding: 30px;
             }
-            
+
             .letter-content {
                 font-size: 18px;
             }
-            
+
             .letter-signature {
                 font-size: 32px;
                 padding-right: 30px;
             }
-            
+
             .action-btn {
                 padding: 15px 30px;
                 font-size: 18px;
             }
-            
+
             .action-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
-            
+
             .back-button {
                 top: 10px;
                 left: 10px;
@@ -432,19 +438,19 @@
             body {
                 padding: 10px;
             }
-            
+
             .page-title {
                 padding-top: 60px;
             }
-            
-            .page-title h1 {
-                font-size: 28px;
-            }
-            
+
+                .page-title h1 {
+                    font-size: 28px;
+                }
+
             .letter-container {
                 padding: 20px;
             }
-            
+
             .letter-content-wrapper {
                 padding: 20px;
             }
@@ -467,7 +473,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -478,7 +486,7 @@
     <!-- 返回按钮 -->
     <button class="back-button" id="back-button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
         </svg>
         返回蛋糕页面
     </button>
@@ -487,7 +495,7 @@
         <h1>
             <span class="age-badge">21岁</span>神秘信件
         </h1>
-        <p>专属臭宝宝的生日祝福，请查收 ✨</p>
+        <p>专属你的生日祝福，请查收 ✨</p>
     </div>
 
     <!-- 信封容器 -->
@@ -497,7 +505,7 @@
         <div class="envelope-decoration decoration-2"></div>
         <div class="envelope-decoration decoration-3"></div>
         <div class="envelope-decoration decoration-4"></div>
-        
+
         <div class="letter-content-wrapper">
             <div class="letter-content" id="letter-content">
                 <!-- 信件内容将从外部文件加载 -->
@@ -508,10 +516,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="letter-signature" id="letter-signature">
                 永远爱你的尼克🦊<br>
-                <span style="color: #ff6b6b; font-size: 32px;">你的专属狐狸陈先生</span>
+                <span style="color: #ff6b6b; font-size: 32px;">你的专属狐狸先生</span>
                 <span class="age-mention">庆祝你的21岁生日！</span>
             </div>
         </div>
@@ -520,7 +528,7 @@
         <div class="wish-display" id="wish-display" style="display: none;">
             <h3>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff3366">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
                 你的21岁生日愿望
             </h3>
@@ -532,13 +540,13 @@
     <div class="action-buttons">
         <button class="action-btn" id="download-pdf">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
             </svg>
             下载PDF信件
         </button>
         <button class="action-btn secondary" id="print-letter">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+                <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
             </svg>
             打印信件
         </button>
@@ -554,11 +562,11 @@
         const wishDisplay = document.getElementById('wish-display');
         const wishText = document.getElementById('wish-text');
         const fallingEnvelopes = document.getElementById('falling-envelopes');
-        
+
         // 初始化飘落的信封动画
         function initFallingEnvelopes() {
             const envelopes = ['✉️', '📨', '💌', '📮', '📥'];
-            
+
             for (let i = 0; i < 15; i++) {
                 const envelope = document.createElement('div');
                 envelope.className = 'envelope';
@@ -571,34 +579,54 @@
                 fallingEnvelopes.appendChild(envelope);
             }
         }
-        
-        // 从外部文件加载信件内容
-        async function loadLetterContent() {
+
+        function loadLetterContent() {
             try {
-                const response = await fetch('letter-content.txt');
-                if (!response.ok) throw new Error('无法加载信件内容');
-                
-                const text = await response.text();
+                // 直接写死的信件内容
+                const text = `给最特别的你
+21岁生日快乐
+
+亲爱的小寿星宝宝🐰：
+
+今天是你的生日，我想送你这样一个特别的小礼物。就像《疯狂动物城》里的朱迪和尼克，我们的故事也充满了惊喜、冒险和温暖。
+
+我的小兔子警官，新的一岁里面你一定要更加勇敢，要比以前快乐，希望你在新的一年都遇见善良的人，遇见一些对你有帮助的人，不遇烂人，在新的一岁万事顺遂。
+
+在新的一岁里，希望你能像朱迪一样勇敢、坚定，无论遇到什么挑战都能勇往直前。面对考试，希望你考前努力，临近考试临危不惧，不害怕，不乱想。相信你可以成功上岸！
+
+在新的一岁里，作为你的搭档，我也会一直不断改变以前不好的地方，对你加倍包容，改掉我自己不听劝，不理智的行为，遇见问题耐心跟你解决。一定不会暴躁！           
+
+在新的一岁里，希望你能更爱自己一点：不用为了追求 “完美” 而苛责自己，累了就好好休息；
+
+学会欣赏自己的每一点进步，哪怕只是今天比昨天多了份从容，也值得为自己点赞，活成不慌不忙、自在舒展的样子。
+
+生日快乐，我的小朱迪！愿新的一岁，你依然勇敢追梦，而我，会永远在你身旁，做你最信任的搭档。
+
+愿我们的故事，永远比疯狂动物城更精彩，更有爱。因为在这里，没有"如果不行"的犹豫，只有"一定是你"的坚定。
+
+永远爱你的尼克🦊
+你的专属狐狸陈先生`;
+
                 const lines = text.split('\n').filter(line => line.trim() !== '');
-                
+
                 let contentHTML = '';
                 lines.forEach((line, index) => {
                     const delay = index * 0.1;
                     let processedLine = line;
-                    
+
                     // 处理21岁相关的高亮
                     if (line.includes('21') || line.includes('二十一')) {
                         processedLine = line.replace(/(21|二十一)/g, '<span class="highlight">$1</span>');
                     }
-                    
+
                     contentHTML += `<p style="animation-delay: ${delay}s">${processedLine}</p>`;
                 });
-                
+
                 letterContent.innerHTML = contentHTML;
-                
+
                 // 检查是否有保存的愿望
-                checkSavedWish();
-                
+              //  checkSavedWish();
+
             } catch (error) {
                 console.error('加载信件内容失败:', error);
                 letterContent.innerHTML = `
@@ -607,7 +635,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                         </svg>
                         <p style="font-size: 20px; margin-bottom: 10px;">无法加载信件内容</p>
-                        <p style="font-size: 14px; color: #999;">请检查 letter-content.txt 文件是否存在</p>
+                        <p style="font-size: 14px; color: #999;">请检查代码配置</p>
                         <button onclick="loadLetterContent()" style="margin-top: 20px; padding: 10px 20px; background: linear-gradient(135deg, #ff9a00, #ff6b6b); color: white; border: none; border-radius: 5px; cursor: pointer;">
                             重试
                         </button>
@@ -615,41 +643,41 @@
                 `;
             }
         }
-        
+
         // 检查并显示保存的愿望
         function checkSavedWish() {
             const savedWish = localStorage.getItem('21stBirthdayWish');
             if (savedWish && savedWish.trim() !== '') {
                 wishText.textContent = savedWish;
                 wishDisplay.style.display = 'block';
-                
+
                 // 获取许愿日期
                 const wishDate = localStorage.getItem('wishMadeDate');
                 if (wishDate) {
                     const date = new Date(wishDate);
                     const dateStr = date.toLocaleDateString('zh-CN');
                     const timeStr = date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
-                    
+
                     const dateElement = document.createElement('div');
                     dateElement.style.fontSize = '14px';
                     dateElement.style.color = '#999';
                     dateElement.style.marginTop = '10px';
                     dateElement.style.textAlign = 'right';
                     dateElement.innerHTML = `许愿时间: ${dateStr} ${timeStr}`;
-                    
+
                     wishDisplay.appendChild(dateElement);
                 }
             }
         }
-        
+
         // 返回蛋糕页面
-        backButton.addEventListener('click', function() {
+        backButton.addEventListener('click', function () {
             playTransitionSound();
             window.location.href = 'cake-animation.html';
         });
-        
+
         // PDF下载功能
-        downloadPdfBtn.addEventListener('click', async function() {
+        downloadPdfBtn.addEventListener('click', async function () {
             try {
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({
@@ -658,38 +686,38 @@
                     format: 'a4',
                     compress: true
                 });
-                
+
                 // 设置字体
                 pdf.setFont("helvetica");
-                
+
                 // 添加背景色（模拟背景效果）
                 pdf.setFillColor(12, 36, 97);
                 pdf.rect(0, 0, 210, 297, 'F');
-                
+
                 // 添加21岁生日信件标题
                 pdf.setFontSize(28);
                 pdf.setTextColor(255, 154, 0);
                 pdf.text("21岁生日信件", 105, 30, { align: 'center' });
-                
+
                 pdf.setFontSize(16);
                 pdf.setTextColor(255, 107, 107);
                 pdf.text("给最特别的你", 105, 40, { align: 'center' });
-                
+
                 // 添加分隔线
                 pdf.setDrawColor(255, 154, 0);
                 pdf.setLineWidth(2);
                 pdf.line(30, 45, 180, 45);
-                
+
                 // 添加信件内容
                 const contentText = letterContent.innerText;
                 pdf.setFontSize(12);
                 pdf.setTextColor(51, 51, 51);
-                
+
                 // 分页处理
                 const lines = pdf.splitTextToSize(contentText, 170);
                 let y = 60;
                 const pageHeight = 250;
-                
+
                 for (let i = 0; i < lines.length; i++) {
                     if (y > pageHeight) {
                         pdf.addPage();
@@ -700,24 +728,24 @@
                     pdf.text(lines[i], 20, y);
                     y += 7;
                 }
-                
+
                 // 添加签名
                 y = Math.min(y + 20, 260);
                 pdf.setFontSize(22);
                 pdf.setTextColor(12, 36, 97);
                 pdf.setFont("times", "italic");
                 pdf.text("永远爱你的尼克🦊", 190, y, { align: 'right' });
-                
+
                 y += 10;
                 pdf.setFontSize(18);
                 pdf.setTextColor(255, 107, 107);
-                pdf.text("你的专属狐狸陈先生", 190, y, { align: 'right' });
-                
+                pdf.text("你的专属狐狸先生", 190, y, { align: 'right' });
+
                 y += 10;
                 pdf.setFontSize(14);
                 pdf.setTextColor(255, 51, 102);
                 pdf.text("庆祝21岁生日！", 190, y, { align: 'right' });
-                
+
                 // 添加保存的愿望（如果有）
                 const savedWish = localStorage.getItem('21stBirthdayWish');
                 if (savedWish && savedWish.trim() !== '') {
@@ -726,7 +754,7 @@
                     pdf.setTextColor(102, 102, 102);
                     pdf.setFont("helvetica");
                     pdf.text("附：21岁生日愿望", 20, y);
-                    
+
                     y += 10;
                     const wishLines = pdf.splitTextToSize(savedWish, 170);
                     pdf.setFontSize(11);
@@ -736,156 +764,156 @@
                         y += 6;
                     });
                 }
-                
+
                 // 添加页脚
                 pdf.setFontSize(10);
                 pdf.setTextColor(136, 136, 136);
-                
+
                 const now = new Date();
                 const dateStr = now.toLocaleDateString('zh-CN');
                 pdf.text(`21岁生日信件 | 生成日期: ${dateStr}`, 105, 285, { align: 'center' });
-                
+
                 // 保存PDF
                 pdf.save('21岁生日信件.pdf');
-                
+
                 // 显示成功提示
                 showMessage('PDF信件已成功下载！', 'success');
-                
+
             } catch (error) {
                 console.error('PDF生成失败:', error);
                 showMessage('PDF生成失败，请使用打印功能。', 'error');
             }
         });
-        
+
         // 打印功能
-        printLetterBtn.addEventListener('click', function() {
+        printLetterBtn.addEventListener('click', function () {
             const printWindow = window.open('', '_blank');
-            
+
             // 获取信件内容
             const content = letterContent.innerHTML;
             const signature = letterSignature.innerHTML;
             const savedWish = localStorage.getItem('21stBirthdayWish');
-            
+
             let wishHTML = '';
             if (savedWish && savedWish.trim() !== '') {
                 wishHTML = `
-                    <div style="margin-top: 40px; padding: 20px; background: #fff0f5; border-left: 4px solid #ff3366; border-radius: 5px;">
-                        <h3 style="color: #ff3366; margin-bottom: 10px;">21岁生日愿望</h3>
-                        <p style="color: #666; font-style: italic;">${savedWish}</p>
-                    </div>
-                `;
+                        <div style="margin-top: 40px; padding: 20px; background: #fff0f5; border-left: 4px solid #ff3366; border-radius: 5px;">
+                            <h3 style="color: #ff3366; margin-bottom: 10px;">21岁生日愿望</h3>
+                            <p style="color: #666; font-style: italic;">${savedWish}</p>
+                        </div>
+                    `;
             }
-            
+
             printWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>21岁生日信件</title>
-                    <meta charset="UTF-8">
-                    <style>
-                        @media print {
-                            @page {
-                                size: A4;
-                                margin: 20mm;
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>21岁生日信件</title>
+                        <meta charset="UTF-8">
+                        <style>
+                            @media print {
+                                @page {
+                                    size: A4;
+                                    margin: 20mm;
+                                }
+                                body {
+                                    font-family: 'Microsoft YaHei', sans-serif;
+                                    line-height: 1.8;
+                                    color: #333;
+                                    background: linear-gradient(135deg, #fff0f5 0%, #ffe8cc 100%);
+                                    padding: 40px;
+                                }
                             }
                             body {
+                                max-width: 800px;
+                                margin: 0 auto;
+                                padding: 60px;
                                 font-family: 'Microsoft YaHei', sans-serif;
                                 line-height: 1.8;
                                 color: #333;
                                 background: linear-gradient(135deg, #fff0f5 0%, #ffe8cc 100%);
-                                padding: 40px;
                             }
-                        }
-                        body {
-                            max-width: 800px;
-                            margin: 0 auto;
-                            padding: 60px;
-                            font-family: 'Microsoft YaHei', sans-serif;
-                            line-height: 1.8;
-                            color: #333;
-                            background: linear-gradient(135deg, #fff0f5 0%, #ffe8cc 100%);
-                        }
-                        .print-header {
-                            text-align: center;
-                            margin-bottom: 50px;
-                            padding-bottom: 30px;
-                            border-bottom: 3px solid #ff9a00;
-                        }
-                        .print-header h1 {
-                            color: #ff3366;
-                            font-size: 36px;
-                            margin-bottom: 15px;
-                        }
-                        .age-badge {
-                            display: inline-block;
-                            background: linear-gradient(135deg, #ff3366, #ff9933);
-                            color: white;
-                            padding: 5px 15px;
-                            border-radius: 20px;
-                            font-weight: bold;
-                            margin: 0 5px;
-                        }
-                        .print-content {
-                            font-size: 20px;
-                            margin-bottom: 50px;
-                            padding: 30px;
-                            background: rgba(255, 255, 255, 0.9);
-                            border-radius: 15px;
-                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                        }
-                        .print-signature {
-                            text-align: right;
-                            margin-top: 80px;
-                            font-family: 'Brush Script MT', cursive;
-                            font-size: 36px;
-                            color: #0c2461;
-                            border-top: 2px dashed #ff9a00;
-                            padding-top: 30px;
-                        }
-                        .print-footer {
-                            text-align: center;
-                            margin-top: 60px;
-                            color: #888;
-                            font-size: 14px;
-                            border-top: 1px dashed #ddd;
-                            padding-top: 20px;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="print-header">
-                        <h1><span class="age-badge">21岁</span>生日信件</h1>
-                        <p style="color: #666; font-style: italic;">专属你的生日祝福</p>
-                    </div>
-                    
-                    <div class="print-content">
-                        ${content}
-                    </div>
-                    
-                    ${wishHTML}
-                    
-                    <div class="print-signature">
-                        ${signature}
-                    </div>
-                    
-                    <div class="print-footer">
-                        此信件为21岁生日专属定制 | 保存日期: ${new Date().toLocaleDateString('zh-CN')}
-                    </div>
-                    
-                    <script>
-                        window.onload = function() {
-                            window.print();
-                            setTimeout(function() {
-                                window.close();
-                            }, 1000);
-                        };
-                    <\/script>
-                </body>
-                </html>
-            `);
+                            .print-header {
+                                text-align: center;
+                                margin-bottom: 50px;
+                                padding-bottom: 30px;
+                                border-bottom: 3px solid #ff9a00;
+                            }
+                            .print-header h1 {
+                                color: #ff3366;
+                                font-size: 36px;
+                                margin-bottom: 15px;
+                            }
+                            .age-badge {
+                                display: inline-block;
+                                background: linear-gradient(135deg, #ff3366, #ff9933);
+                                color: white;
+                                padding: 5px 15px;
+                                border-radius: 20px;
+                                font-weight: bold;
+                                margin: 0 5px;
+                            }
+                            .print-content {
+                                font-size: 20px;
+                                margin-bottom: 50px;
+                                padding: 30px;
+                                background: rgba(255, 255, 255, 0.9);
+                                border-radius: 15px;
+                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                            }
+                            .print-signature {
+                                text-align: right;
+                                margin-top: 80px;
+                                font-family: 'Brush Script MT', cursive;
+                                font-size: 36px;
+                                color: #0c2461;
+                                border-top: 2px dashed #ff9a00;
+                                padding-top: 30px;
+                            }
+                            .print-footer {
+                                text-align: center;
+                                margin-top: 60px;
+                                color: #888;
+                                font-size: 14px;
+                                border-top: 1px dashed #ddd;
+                                padding-top: 20px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="print-header">
+                            <h1><span class="age-badge">21岁</span>生日信件</h1>
+                            <p style="color: #666; font-style: italic;">专属你的生日祝福</p>
+                        </div>
+
+                        <div class="print-content">
+                            ${content}
+                        </div>
+
+                        ${wishHTML}
+
+                        <div class="print-signature">
+                            ${signature}
+                        </div>
+
+                        <div class="print-footer">
+                            此信件为21岁生日专属定制 | 保存日期: ${new Date().toLocaleDateString('zh-CN')}
+                        </div>
+
+                        <script>
+                            window.onload = function() {
+                                window.print();
+                                setTimeout(function() {
+                                    window.close();
+                                }, 1000);
+                            };
+                        <\/script>
+                    </body>
+                    </html>
+                `);
             printWindow.document.close();
         });
-        
+
         // 显示消息提示
         function showMessage(text, type) {
             const message = document.createElement('div');
@@ -900,15 +928,15 @@
             message.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
             message.style.animation = 'slideIn 0.3s ease';
             message.textContent = text;
-            
+
             if (type === 'success') {
                 message.style.background = 'linear-gradient(135deg, #4CAF50, #8BC34A)';
             } else {
                 message.style.background = 'linear-gradient(135deg, #ff6b6b, #ff3366)';
             }
-            
+
             document.body.appendChild(message);
-            
+
             setTimeout(() => {
                 message.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
@@ -916,7 +944,7 @@
                 }, 300);
             }, 3000);
         }
-        
+
         // 工具函数
         function playTransitionSound() {
             const audio = new Audio();
@@ -924,15 +952,15 @@
             audio.volume = 0.4;
             audio.play().catch(e => console.log("转场音效播放失败"));
         }
-        
+
         // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initFallingEnvelopes();
             loadLetterContent();
-            
+
             // 为按钮添加点击效果
             [downloadPdfBtn, printLetterBtn].forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     this.style.transform = 'scale(0.95)';
                     setTimeout(() => {
                         this.style.transform = '';
